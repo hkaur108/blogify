@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('./partials/header.ejs') %>
+    <title>Document</title>
+    <style>
+        body{
+            background-color:rgb(240, 235, 230);
+        }
+    </style>
+</head>
+<body>
+    <%-include('./partials/nav.ejs') %>
+
+    <div class="container mt-4">
+        <h5 class="my-2 text-capitalize"> <%=blog.title  %></h5>
+        <img src="<%=blog.coverImageURL  %>" style="width:40vw; object-fit: contain; ">
+        <p class="my-3"><%= blog.body  %></p>
+        <a href="/blog/edit/<%=blog._id  %>"><button type="button" class="btn btn-success btn-sm my-3">Edit Post</button></a>
+    </div>
+    <div class="container mt-3">
+        <h5>Comments</h5>
+        <% if (locals.user) { %>
+            <form action="/blog/comment/<%= blog._id %>" method="post">
+            <div class="form-group">
+                <input name="content" type="text" class="form-control" id="content" placeholder="Enter your comment">
+            </div>
+            <button type="submit" class="btn btn-primary my-3 btn-sm">Submit</button>
+        </form>
+        <% } %>
+        
+    </div>
+
+    <div class="container mt-3">
+        <% comments.forEach(comment => { %>
+            <p class="px-4 py-2"><%=comment.content %></p>
+        <% }) %>
+    </div>
+    <%-include('./partials/footer.ejs') %>
+</body>
+</html>

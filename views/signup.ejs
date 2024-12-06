@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('./partials/header.ejs') %>
+    <title>Signup</title>
+</head>
+<body>
+    <%-include('./partials/nav.ejs') %>
+
+    <div class="container mt-5">
+        <form  action="/user/signup" method="post">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text"  name="fullName" class="form-control" id="fullName" aria-describedby="fullName" placeholder="Enter full Name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" name="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    
+    <%-include('./partials/footer.ejs') %>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('./partials/header.ejs') %>
+    <title>Document</title>
+    <style>
+        body{
+            background-color:rgb(240, 235, 230);
+        }
+    </style>
+</head>
+<body>
+    <%-include('./partials/nav.ejs') %>
+
+    <div class="container mt-2">
+            <div class="row ">
+                <% if (locals.user) { %>
+                    <% blogs.forEach(blog => { %>
+    <div class="col-sm-6 col-md-6 col-lg-3 m-3">
+        <div class="card" style="width: 13rem; box-shadow: 0px 0px 5px 5px rgb(201, 199, 199);">
+        <img class="card-img-top mx-auto" style="width: 100%; height:200px; object-fit: cover; " src="<%= blog.coverImageURL %>" />
+        <div class="card-body text-center">
+            <h6 class="card-title text-capitalize"><%=blog.title %></h6>
+            <a href= "/blog/<%= blog._id %>" class="btn btn-primary btn-sm">View </a>
+            <a href="/blog/delete/<%=blog._id  %>" class="btn btn-danger btn-sm my-1">Delete</a>
+        </div>
+        </div>
+    </div>
+    <% }) %>
+<% } %>
+    </div>
+</div>
+    <%-include('./partials/footer.ejs') %>
+</body>
+</html>
